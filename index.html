@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TM7 Zap | Pro Smash Bros Player</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+    }
+    header, footer {
+      background: #111;
+      padding: 1rem;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      position: sticky;
+      z-index: 1000;
+    }
+    header {
+      top: 0;
+    }
+    footer {
+      bottom: 0;
+    }
+    .socials a {
+      margin: 0 0.5rem;
+      color: #1da1f2;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    .socials a:hover {
+      transform: scale(1.2);
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 2rem 1rem 5rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    .widget {
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+      animation: fadeInUp 0.8s ease;
+      transition: transform 0.3s ease;
+    }
+    .widget:hover {
+      transform: translateY(-5px);
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      color: #0ff;
+    }
+    p {
+      line-height: 1.6;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    ul.results {
+      margin-top: 1rem;
+      padding-left: 1.5rem;
+    }
+    ul.results li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TM7 Zap</h1>
+    <p>Pro Super Smash Bros. Player</p>
+    <div class="socials">
+      <a href="https://twitter.com/tm7zap" target="_blank">Twitter</a>
+      <a href="https://twitch.tv/tm7zap" target="_blank">Twitch</a>
+      <a href="https://youtube.com/@tm7zap" target="_blank">YouTube</a>
+      <a href="https://instagram.com/tm7zap" target="_blank">Instagram</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="widget">
+      <h2>About Zap</h2>
+      <p>TM7 Zap is known for lightning-fast reflexes, strategic mind games, and tournament dominance. A crowd favorite, Zap’s playstyle electrifies every stage.</p>
+    </section>
+
+    <section class="widget">
+      <h2>Recent Highlights</h2>
+      <p>Catch his epic win at SmashCon and clutch comeback during Final Destination! Clips are regularly updated on his socials.</p>
+    </section>
+
+    <section class="widget">
+      <h2>Upcoming Tournaments</h2>
+      <p>Don't miss Zap at EVO Japan and Genesis! Follow on Twitter for live updates and bracket links.</p>
+    </section>
+
+    <section class="widget">
+      <h2>Match Gallery</h2>
+      <div class="gallery">
+        <img src="https://via.placeholder.com/300x200?text=Zap+vs+Leo" alt="Zap vs Leo">
+        <img src="https://via.placeholder.com/300x200?text=Zap+vs+Light" alt="Zap vs Light">
+        <img src="https://via.placeholder.com/300x200?text=Zap+Clutch+Win" alt="Clutch Win">
+        <img src="https://via.placeholder.com/300x200?text=Final+Stock+Showdown" alt="Final Stock">
+      </div>
+    </section>
+
+    <section class="widget">
+      <h2>Results</h2>
+      <ul class="results">
+        <li>1st Place - SmashCon 2025</li>
+        <li>2nd Place - EVO Japan 2025</li>
+        <li>Top 8 - Genesis X</li>
+        <li>Winner - Online Invitational 2025</li>
+      </ul>
+    </section>
+
+    <section class="widget">
+      <h2>More Coming Soon</h2>
+      <p>Stay tuned for in-depth strategy guides, Zap's favorite tech, and exclusive behind-the-scenes tournament footage.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 TM7 Zap | All rights reserved</p>
+  </footer>
+</body>
+</html>
