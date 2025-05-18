@@ -3,193 +3,388 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TM7_ZAP | Pro Smash Bros Player</title>
+    <title>TM7_ZAP</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add Heroicons CDN for icons -->
+    <script src="https://unpkg.com/@heroicons/vue@2.0.18/dist/heroicons.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        scroll-behavior: smooth;
+      body,
+      h1,
+      h2 {
+        font-family: "Orbitron", "Roboto", sans-serif;
       }
-      body {
-        font-family: "Roboto", sans-serif;
-        background: #0d0d0d;
-        color: #fff;
-      }
+      /* Hide header/footer unless at top/bottom */
       header,
       footer {
-        background: #111;
-        padding: 1rem;
-        text-align: center;
-        font-family: "Orbitron", sans-serif;
-        position: sticky;
-        z-index: 1000;
+        transition: opacity 0.4s;
+        opacity: 1;
       }
-      header {
-        top: 0;
+      header.hide,
+      footer.hide {
+        opacity: 0;
+        pointer-events: none;
       }
-      footer {
-        bottom: 0;
-      }
-      .socials a {
-        margin: 0 0.5rem;
-        color: #1da1f2;
-        text-decoration: none;
-        transition: transform 0.3s ease;
-      }
-      .socials a:hover {
-        transform: scale(1.2);
-      }
-      .container {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        padding: 2rem 1rem 5rem;
-        max-width: 800px;
-        margin: auto;
-      }
-      .widget {
-        background: #1a1a1a;
-        padding: 1.5rem;
-        border-radius: 12px;
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-        animation: fadeInUp 0.8s ease;
-        transition: transform 0.3s ease;
-      }
-      .widget:hover {
-        transform: translateY(-5px);
-      }
-      @keyframes fadeInUp {
-        0% {
-          opacity: 0;
-          transform: translateY(40px);
-        }
+
+      @keyframes wave {
+        0%,
         100% {
-          opacity: 1;
+          transform: translateY(0);
+        }
+        20% {
+          transform: translateY(-12px);
+        }
+        40% {
           transform: translateY(0);
         }
       }
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
+      .animate-\[wave_1\.5s_infinite\] {
+        animation: wave 1.5s infinite;
       }
-      h2 {
-        margin-bottom: 1rem;
-        font-family: "Orbitron", sans-serif;
-        color: #0ff;
+      .animate-\[wave_1\.5s_infinite_0\.1\] {
+        animation: wave 1.5s infinite;
+        animation-delay: 0.1s;
       }
-      p {
-        line-height: 1.6;
+      .animate-\[wave_1\.5s_infinite_0\.2\] {
+        animation: wave 1.5s infinite;
+        animation-delay: 0.2s;
       }
-      .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1rem;
-        margin-top: 1rem;
+      .animate-\[wave_1\.5s_infinite_0\.3\] {
+        animation: wave 1.5s infinite;
+        animation-delay: 0.3s;
       }
-      .gallery img {
-        width: 100%;
-        border-radius: 8px;
-        transition: transform 0.3s ease;
+      .animate-\[wave_1\.5s_infinite_0\.4\] {
+        animation: wave 1.5s infinite;
+        animation-delay: 0.4s;
       }
-      .gallery img:hover {
-        transform: scale(1.05);
+      .animate-\[wave_1\.5s_infinite_0\.5\] {
+        animation: wave 1.5s infinite;
+        animation-delay: 0.5s;
       }
-      ul.results {
-        margin-top: 1rem;
-        padding-left: 1.5rem;
+      .animate-\[wave_1\.5s_infinite_0\.6\] {
+        animation: wave 1.5s infinite;
+        animation-delay: 0.6s;
       }
-      ul.results li {
-        margin-bottom: 0.5rem;
+      .animate-\[wave_1\.5s_infinite_0\.7\] {
+        animation: wave 1.5s infinite;
+        animation-delay: 0.7s;
       }
     </style>
   </head>
-  <body>
-    <header>
-      <h1>TM7 Zap</h1>
-      <p>Pro Super Smash Bros. Player</p>
-      <div class="socials">
-        <a href="https://twitter.com/tm7zap" target="_blank">Twitter</a>
-        <a href="https://twitch.tv/tm7zap" target="_blank">Twitch</a>
-        <a href="https://youtube.com/@tm7zap" target="_blank">YouTube</a>
-        <a href="https://instagram.com/tm7zap" target="_blank">Instagram</a>
+  <body class="relative min-h-screen text-white font-sans">
+    <!-- Background video -->
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      id="bgvid"
+      class="fixed inset-0 w-full h-full object-cover scale-110 blur-sm brightness-50 z-[-2]"
+    >
+      <source src="zap.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <!-- Overlay for extra darkening -->
+    <div
+      class="fixed inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90 z-[-1]"
+    ></div>
+
+    <!-- Header -->
+    <header
+      id="mainHeader"
+      class="bg-black border-b border-teal-300/20 shadow-xl py-6 text-center fixed top-0 left-0 w-full z-20 transition-opacity duration-500"
+    >
+      <h1
+        class="text-4xl md:text-8xl font-bold text-teal-300 tracking-wide drop-shadow-lg font-orbitron"
+      >
+        TM7_ZAP⚡
+      </h1>
+      <p class="text-lg md:text-xl text-teal-200 mt-2 font-light">
+        Pro Super Smash Bros. Ultimate Player
+      </p>
+      <div class="flex justify-center gap-4 mt-4">
+        <a
+          href="https://twitter.com/tm7_zap"
+          target="_blank"
+          class="hover:scale-110 transition flex items-center gap-2 text-teal-300 hover:text-teal-100 text-xl"
+        >
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a
+          href="https://twitch.tv/tm7_zap"
+          target="_blank"
+          class="hover:scale-110 transition flex items-center gap-2 text-purple-400 hover:text-purple-200 text-xl"
+        >
+          <i class="fab fa-twitch"></i>
+        </a>
+        <a
+          href="https://youtube.com/@tm7_zap"
+          target="_blank"
+          class="hover:scale-110 transition flex items-center gap-2 text-red-400 hover:text-red-200 text-xl"
+        >
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a
+          href="https://instagram.com/tm7_zap"
+          target="_blank"
+          class="hover:scale-110 transition flex items-center gap-2 text-pink-400 hover:text-pink-200 text-xl"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a
+          href="https://discord.gg/yourdiscord"
+          target="_blank"
+          class="hover:scale-110 transition flex items-center gap-2 text-indigo-400 hover:text-indigo-200 text-xl"
+        >
+          <i class="fab fa-discord"></i>
+        </a>
+        <a
+          href="https://tiktok.com/@tm7_zap"
+          target="_blank"
+          class="hover:scale-110 transition flex items-center gap-2 text-gray-100 hover:text-gray-400 text-xl"
+        >
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <!-- SmashWiki -->
+        <a
+          href="https://www.ssbwiki.com/User:TM7_ZAP"
+          target="_blank"
+          class="hover:scale-110 transition flex items-center gap-2 text-yellow-300 hover:text-yellow-100 text-xl"
+          title="SmashWiki"
+        >
+          <i class="fas fa-book"></i>
+        </a>
+        <!-- Liquipedia -->
+        <a
+          href="https://liquipedia.net/smash/TM7_ZAP"
+          target="_blank"
+          class="hover:scale-110 transition flex items-center gap-2 text-teal-300 hover:text-teal-100 text-xl"
+          title="Liquipedia"
+        >
+          <i class="fas fa-graduation-cap"></i>
+        </a>
+        <!-- Email -->
+        <a
+          href="mailto:your@email.com"
+          class="hover:scale-110 transition flex items-center gap-2 text-green-300 hover:text-green-100 text-xl"
+          title="Email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
       </div>
     </header>
 
-    <main class="container">
-      <section class="widget">
-        <h2>About Zap</h2>
-        <p>
-          TM7 Zap is known for lightning-fast reflexes, strategic mind games,
+    <!-- Main Content -->
+    <main
+      class="container mx-auto px-4 py-32 flex flex-col gap-10 max-w-3xl relative z-10"
+    >
+      <!-- Add mt-20 for extra top margin on the first section -->
+      <section
+        class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-teal-300/20 p-8 hover:scale-[1.02] transition mt-20"
+      >
+        <h2 class="text-2xl font-semibold text-teal-200 mb-2 font-orbitron">
+          About Zap
+        </h2>
+        <p class="text-gray-100">
+          TM7_ZAP is known for lightning-fast reflexes, strategic mind games,
           and tournament dominance. A crowd favorite, Zap’s playstyle
-          electrifies every stage.
+          electrifies every stage. ZAP is among the most up and coming players
+          in the Smash community, with a growing fanbase and a reputation for
+          clutch plays and high-level, he is currently a Free Agent looking for
+          sponsorship https://metafy.gg/@tm7_zap , offers coaching on Metafy,
+          able to train any character, as he's also known to have one of, if
+          not, the best random on wifi
         </p>
       </section>
 
-      <section class="widget">
-        <h2>Recent Highlights</h2>
-        <p>
+      <section
+        class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-teal-300/20 p-8 hover:scale-[1.02] transition"
+      >
+        <h2 class="text-2xl font-semibold text-teal-200 mb-2 font-orbitron">
+          Recent Highlights
+        </h2>
+        <p class="text-gray-100">
           Catch his epic win at SmashCon and clutch comeback during Final
           Destination! Clips are regularly updated on his socials.
         </p>
       </section>
 
-      <section class="widget">
-        <h2>Upcoming Tournaments</h2>
-        <p>
+      <section
+        class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-teal-300/20 p-8 hover:scale-[1.02] transition"
+      >
+        <h2 class="text-2xl font-semibold text-teal-200 mb-2 font-orbitron">
+          Upcoming Tournaments
+        </h2>
+        <p class="text-gray-100">
           Don't miss Zap at EVO Japan and Genesis! Follow on Twitter for live
           updates and bracket links.
         </p>
       </section>
 
-      <section class="widget">
-        <h2>Match Gallery</h2>
-        <div class="gallery">
+      <section
+        class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-teal-300/20 p-8 hover:scale-[1.02] transition"
+      >
+        <h2 class="text-2xl font-semibold text-teal-200 mb-4 font-orbitron">
+          Match Gallery
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <img
             src="https://via.placeholder.com/300x200?text=Zap+vs+Leo"
             alt="Zap vs Leo"
+            class="rounded-xl shadow-lg hover:scale-105 transition"
           />
           <img
             src="https://via.placeholder.com/300x200?text=Zap+vs+Light"
             alt="Zap vs Light"
+            class="rounded-xl shadow-lg hover:scale-105 transition"
           />
           <img
             src="https://via.placeholder.com/300x200?text=Zap+Clutch+Win"
             alt="Clutch Win"
+            class="rounded-xl shadow-lg hover:scale-105 transition"
           />
           <img
             src="https://via.placeholder.com/300x200?text=Final+Stock+Showdown"
             alt="Final Stock"
+            class="rounded-xl shadow-lg hover:scale-105 transition"
           />
         </div>
       </section>
 
-      <section class="widget">
-        <h2>Results</h2>
-        <ul class="results">
+      <section
+        class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-teal-300/20 p-8 hover:scale-[1.02] transition"
+      >
+        <h2 class="text-2xl font-semibold text-teal-200 mb-2 font-orbitron">
+          Results
+        </h2>
+        <ul class="list-disc list-inside text-lg mt-2 space-y-1 text-gray-100">
           <li>1st Place - SmashCon 2025</li>
           <li>2nd Place - EVO Japan 2025</li>
-          <li>Top 8 - Genesis X</li>
+          <li>13th - CEO 2023</li>
           <li>Winner - Online Invitational 2025</li>
         </ul>
       </section>
 
-      <section class="widget">
-        <h2>More Coming Soon</h2>
-        <p>
+      <section
+        class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-teal-300/20 p-8 hover:scale-[1.02] transition"
+      >
+        <h2 class="text-2xl font-semibold text-teal-200 mb-2 font-orbitron">
+          More Coming Soon
+        </h2>
+        <p class="text-gray-100">
           Stay tuned for in-depth strategy guides, Zap's favorite tech, and
           exclusive behind-the-scenes tournament footage.
         </p>
       </section>
     </main>
 
-    <footer>
-      <p>&copy; 2025 TM7 Zap | All rights reserved</p>
+    <!-- Footer -->
+    <footer
+      id="mainFooter"
+      class="bg-black border-t border-teal-300/20 py-4 text-center fixed bottom-0 left-0 w-full z-20 transition-opacity duration-500"
+    >
+      <p class="text-teal-200 tracking-widest text-sm">
+        &copy; 2025 TM7_ZAP | ALL RIGHTS RESERVED
+      </p>
     </footer>
+
+    <!-- Game image popup from the right -->
+    <div
+      id="gamePopupText"
+      class="fixed top-1/2 right-0 translate-y-[-120%] translate-x-full opacity-0 transition-all duration-700 ease-out z-40 w-80 max-w-[90vw] text-center pointer-events-none select-none"
+      style="font-size: 2rem; font-weight: bold; letter-spacing: 0.1em"
+    >
+      <span
+        class="animate-[wave_1.5s_infinite] inline-block text-teal-200 drop-shadow-lg"
+        >C</span
+      >
+      <span
+        class="animate-[wave_1.5s_infinite_0.1] inline-block text-teal-200 drop-shadow-lg"
+        >l</span
+      >
+      <span
+        class="animate-[wave_1.5s_infinite_0.2] inline-block text-teal-200 drop-shadow-lg"
+        >i</span
+      >
+      <span
+        class="animate-[wave_1.5s_infinite_0.3] inline-block text-teal-200 drop-shadow-lg"
+        >c</span
+      >
+      <span
+        class="animate-[wave_1.5s_infinite_0.4] inline-block text-teal-200 drop-shadow-lg"
+        >k</span
+      >
+      <span class="inline-block w-2"></span>
+      <span
+        class="animate-[wave_1.5s_infinite_0.5] inline-block text-teal-200 drop-shadow-lg"
+        >m</span
+      >
+      <span
+        class="animate-[wave_1.5s_infinite_0.6] inline-block text-teal-200 drop-shadow-lg"
+        >e</span
+      >
+      <span
+        class="animate-[wave_1.5s_infinite_0.7] inline-block text-teal-200 drop-shadow-lg"
+        >!</span
+      >
+    </div>
+
+    <a
+      href="bh.html"
+      id="gamePopupLink"
+      target="_blank"
+      rel="noopener"
+      class="fixed top-1/2 right-0 translate-y-[-50%] translate-x-full opacity-0 transition-all duration-700 ease-out z-30 w-80 max-w-[90vw] rounded-xl shadow-2xl border-4 border-teal-300 cursor-pointer"
+      style="display: block"
+    >
+      <img
+        src="game.png"
+        alt="Game"
+        class="w-full h-auto rounded-xl"
+        draggable="false"
+      />
+    </a>
+
+    <script>
+      // Hide header unless at top, footer unless at bottom
+      const header = document.getElementById("mainHeader");
+      const footer = document.getElementById("mainFooter");
+      window.addEventListener("scroll", () => {
+        // Header: show only if near top
+        if (window.scrollY > 40) {
+          header.classList.add("hide");
+        } else {
+          header.classList.remove("hide");
+        }
+        // Footer: show only if near bottom
+        if (
+          window.innerHeight + window.scrollY <
+          document.body.offsetHeight - 40
+        ) {
+          footer.classList.add("hide");
+        } else {
+          footer.classList.remove("hide");
+        }
+      });
+
+      // Show the game.png popup after a short delay
+      setTimeout(() => {
+        const popup = document.getElementById("gamePopupLink");
+        const popupText = document.getElementById("gamePopupText");
+        popup.classList.remove("translate-x-full", "opacity-0");
+        popup.classList.add("translate-x-0", "opacity-100");
+        popupText.classList.remove("translate-x-full", "opacity-0");
+        popupText.classList.add("translate-x-0", "opacity-100");
+      }, 800);
+    </script>
   </body>
 </html>
