@@ -1,11 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>PICO-ZAP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Orbitron font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .font-orbitron {
+        font-family: "Orbitron", "Roboto", sans-serif !important;
+      }
+      body {
+        background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-black via-slate-900 to-teal-900 font-orbitron"
+  >
+    <!-- Scoreboard above the game -->
+    <div
+      id="scoreboard"
+      class="flex flex-col md:flex-row items-center justify-center gap-6 mb-6 mt-8 text-2xl md:text-3xl font-orbitron text-teal-200 drop-shadow-lg select-none"
+      style="letter-spacing: 0.08em"
+    >
+      <span id="scoreDisplay">Score: 0</span>
+      <span id="highScoreDisplay" class="text-yellow-300">High Score: 0</span>
+      <span id="hpDisplay" class="text-cyan-300">HP: 100</span>
+    </div>
+    <div
+      class="w-full max-w-2xl mx-auto p-6 rounded-2xl shadow-2xl bg-black/70 border border-teal-400/30 relative"
+    >
+      <h1
+        class="text-4xl md:text-6xl font-orbitron text-teal-300 text-center drop-shadow-lg tracking-widest mb-2 select-none"
+      >
+        PICO-ZAP
+      </h1>
+      <p
+        class="text-center text-lg text-teal-200 mb-6 font-orbitron tracking-wide select-none"
+      >
+        Dodge the chaos. Survive as long as you can!
+      </p>
+      <div class="flex justify-center">
+        <canvas
+          id="gameCanvas"
+          width="600"
+          height="600"
+          class="rounded-xl border-4 border-teal-400 shadow-2xl bg-black"
+        ></canvas>
+      </div>
+      <!-- Large TM7_ZAP link under the game -->
+      <div class="mt-10 flex justify-center">
+        <a
+          href="index.html"
+          class="font-orbitron text-4xl md:text-6xl text-teal-200 hover:text-yellow-300 transition drop-shadow-lg tracking-widest"
+        >
+          TM7_ZAP
+        </a>
+      </div>
+    </div>
+    <script src="game.js"></script>
+  </body>
 </html>
