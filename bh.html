@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>PICO-ZAP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href=".git/pico.ico" type="image/x-icon" />
     <!-- Orbitron font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
@@ -29,9 +30,14 @@
       class="flex flex-col md:flex-row items-center justify-center gap-6 mb-6 mt-8 text-2xl md:text-3xl font-orbitron text-teal-200 drop-shadow-lg select-none"
       style="letter-spacing: 0.08em"
     >
-      <span id="scoreDisplay">Score: 0</span>
-      <span id="highScoreDisplay" class="text-yellow-300">High Score: 0</span>
-      <span id="hpDisplay" class="text-cyan-300">HP: 100</span>
+      <span id="scoreDisplay">
+        <span>Score:</span>
+        <span id="scoreNumber" class="ml-2">0</span>
+      </span>
+      <span id="highScoreDisplay" class="text-yellow-300">
+        <span>High Score:</span>
+        <span id="highScoreNumber" class="ml-2">0</span>
+      </span>
     </div>
     <div
       class="w-full max-w-2xl mx-auto p-6 rounded-2xl shadow-2xl bg-black/70 border border-teal-400/30 relative"
@@ -44,15 +50,31 @@
       <p
         class="text-center text-lg text-teal-200 mb-6 font-orbitron tracking-wide select-none"
       >
-        Dodge the chaos. Survive as long as you can!
+        Dodge the Attacks. Survive as long as you can!
       </p>
       <div class="flex justify-center">
-        <canvas
-          id="gameCanvas"
-          width="600"
-          height="600"
-          class="rounded-xl border-4 border-teal-400 shadow-2xl bg-black"
-        ></canvas>
+        <div class="relative w-[600px]">
+          <!-- HP display absolutely positioned at top center -->
+          <span
+            id="hpDisplay"
+            class="font-orbitron text-2xl md:text-3xl text-cyan-300 drop-shadow-lg select-none"
+            style="
+              position: absolute;
+              left: 50%;
+              top: 12px;
+              transform: translateX(-50%);
+              z-index: 10;
+              letter-spacing: 0.08em;
+            "
+            >HP: 100</span
+          >
+          <canvas
+            id="gameCanvas"
+            width="600"
+            height="600"
+            class="rounded-xl border-4 border-teal-400 shadow-2xl bg-black"
+          ></canvas>
+        </div>
       </div>
       <!-- Large TM7_ZAP link under the game -->
       <div class="mt-10 flex justify-center">

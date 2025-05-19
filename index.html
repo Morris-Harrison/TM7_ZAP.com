@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href=".git/favicon.ico" type="image/x-icon" />
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Add Heroicons CDN for icons -->
@@ -81,6 +81,45 @@
       .font-orbitron {
         font-family: "Orbitron", "Roboto", sans-serif !important;
       }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          text-shadow: 0 0 12px #44ff82, 0 0 24px #44ff82;
+        }
+        50% {
+          transform: scale(1.08);
+          text-shadow: 0 0 32px #44ff82, 0 0 48px #44ff82;
+        }
+      }
+      .pulsate {
+        animation: pulse 1.2s infinite;
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: scale(1) translateX(0);
+        }
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+          transform: scale(1.13) translateX(-3px);
+        }
+        20%,
+        40%,
+        60%,
+        80% {
+          transform: scale(0.93) translateX(3px);
+        }
+      }
+      .shake-pulse {
+        animation: shake 1.6s infinite; /* was 0.7s, now slower */
+        display: inline-block;
+      }
     </style>
   </head>
   <body class="relative min-h-screen text-white font-sans">
@@ -93,7 +132,7 @@
       id="bgvid"
       class="fixed inset-0 w-full h-full object-cover scale-110 blur-sm brightness-50 z-[-2]"
     >
-      <source src="zap.mp4" type="video/mp4" />
+      <source src=".git/zap.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <!-- Overlay for extra darkening -->
@@ -154,7 +193,7 @@
           title="X (Twitter)"
         >
           <img
-            src="x.png"
+            src=".git/x.png"
             alt="X"
             class="w-5 h-5"
             style="filter: brightness(0) invert(1)"
@@ -184,7 +223,7 @@
           title="Metafy"
         >
           <img
-            src="metafy.png"
+            src=".git/metafy.png"
             alt="Metafy"
             class="w-6 h-6"
             style="
@@ -195,7 +234,7 @@
         </a>
         <!-- Discord -->
         <a
-          href="https://discord.gg/yourdiscord"
+          href="https://discord.gg/grPRjFP"
           target="_blank"
           class="hover:scale-110 transition flex items-center gap-2 text-indigo-400 hover:text-indigo-200 text-xl"
         >
@@ -267,8 +306,11 @@
       <section
         class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-teal-300/20 p-8 hover:scale-[1.02] transition"
       >
-        <h2 class="text-2xl font-semibold text-teal-200 mb-2 font-orbitron">
-          Recent Highlights
+        <h2
+          class="text-3xl font-semibold text-teal-200 mb-2 font-orbitron"
+          style="color: #44ff82"
+        >
+          SERVICES
         </h2>
         <p
           class="text-gray-100"
@@ -278,61 +320,124 @@
             font-family: Georgia, 'Times New Roman', Times, serif;
           "
         >
-          Catch his epic win at SmashCon and clutch comeback during Final
-          Destination! Clips are regularly updated on his socials.
+          Book a Coaching Session today on
+          <a
+            href="https://metafy.gg/tm7_zap"
+            rel="noopener"
+            target="_blank"
+            style="text-decoration: underline; text-underline-offset: 4px"
+            >Metafy</a
+          >
+          to Learn from the Player with the
+          <a
+            href="https://www.youtube.com/watch?v=L2fJJ5mgZGE&t=2s&ab_channel=Poppt1"
+            rel="noopener"
+            target="_blank"
+            style="text-decoration: underline"
+            >Best Fundamentals in the World!</a
+          >
+          Don't forget to check out his
+          <span class="shake-pulse" style="color: #44ff82; font-weight: bold">
+            <a
+              rel="noopener"
+              target="_blank"
+              href="https://www.tiktok.com/@tm7_zap/video/7459520604496989483"
+              >EARTH SHAKING</a
+            >
+          </span>
+          content!
         </p>
       </section>
 
       <section
         class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-teal-300/20 p-8 hover:scale-[1.02] transition"
       >
-        <h2 class="text-2xl font-semibold text-teal-200 mb-4 font-orbitron">
-          Match Gallery
+        <h2
+          class="text-3xl font-semibold text-teal-200 mb-4 font-orbitron"
+          style="color: #44ff82"
+        >
+          RESULTS
         </h2>
         <div class="flex flex-wrap justify-center gap-8">
+          <!-- Coinbox FIRST -->
           <div class="flex flex-col items-center">
-            <img
-              src="cirque.png"
-              alt="Cirque"
-              class="rounded-full object-cover"
-              style="width: 180px; height: 180px; border: 6px solid #44ff82"
-            />
-            <p
-              class="font-orbitron text-lg text-center mt-4"
-              style="color: #44ff82"
-            >
-              Lorem ipsum dolor sit amet, cirque elit. Pellentesque habitant
-              morbi tristique senectus et netus.
+            <div class="flex items-center gap-3">
+              <span
+                class="font-orbitron text-2xl font-bold"
+                style="color: #44ff82"
+                >1 / 492</span
+              >
+              <img
+                src=".git/coinbox.jpg"
+                alt="Coinbox"
+                class="rounded-full object-cover"
+                style="width: 180px; height: 180px; border: 6px solid #ffffff"
+              />
+            </div>
+            <p class="font-orbitron text-lg text-center mt-4">
+              ZAP is a regular Coinbox champion, as well as placing 7th at the
+              Coinnbox IRL 2 Invitational.
             </p>
           </div>
+          <!-- Cirque SECOND -->
           <div class="flex flex-col items-center">
-            <img
-              src="supernova.png"
-              alt="Supernova"
-              class="rounded-full object-cover"
-              style="width: 180px; height: 180px; border: 6px solid #44ff82"
-            />
-            <p
-              class="font-orbitron text-lg text-center mt-4"
-              style="color: #44ff82"
-            >
-              Supernova dummy text: Etiam porta sem malesuada magna mollis
-              euismod. Nullam quis risus eget urna.
+            <div class="flex items-center gap-3">
+              <span
+                class="font-orbitron text-2xl font-bold"
+                style="color: #44ff82"
+                >9 / 145</span
+              >
+              <img
+                src=".git/cirque.png"
+                alt="Cirque"
+                class="rounded-full object-cover"
+                style="width: 180px; height: 180px; border: 6px solid #ffffff"
+              />
+            </div>
+            <p class="font-orbitron text-lg text-center mt-4">
+              ZAP placed 9th at Cirque du CFL 4, defeating Lui$ and Aaron before
+              loosing to Tweek in a game 5 nail biter.
             </p>
           </div>
+          <!-- CEO THIRD -->
           <div class="flex flex-col items-center">
-            <img
-              src="ceo.png"
-              alt="CEO"
-              class="rounded-full object-cover"
-              style="width: 180px; height: 180px; border: 6px solid #44ff82"
-            />
-            <p
-              class="font-orbitron text-lg text-center mt-4"
-              style="color: #44ff82"
-            >
-              CEO placeholder: Vestibulum id ligula porta felis euismod semper.
-              Integer posuere erat a ante.
+            <div class="flex items-center gap-3">
+              <span
+                class="font-orbitron text-2xl font-bold"
+                style="color: #44ff82"
+                >13 / 512</span
+              >
+              <img
+                src=".git/ceo.png"
+                alt="CEO"
+                class="rounded-full object-cover"
+                style="width: 180px; height: 180px; border: 6px solid #ffffff"
+              />
+            </div>
+            <p class="font-orbitron text-lg text-center mt-4">
+              ZAP placed 13th at CEO 2023, defeating Riddles with Bowser Jr. and
+              Luigi in his incredible run.
+            </p>
+          </div>
+          <!-- Supernova FOURTH -->
+          <div class="flex flex-col items-center">
+            <div class="flex items-center gap-3">
+              <span
+                class="font-orbitron text-2xl font-bold"
+                style="color: #44ff82"
+                >49 / 2281</span
+              >
+              <img
+                src=".git/supernova.png"
+                alt="Supernova"
+                class="rounded-full object-cover"
+                style="width: 180px; height: 180px; border: 6px solid #ffffff"
+              />
+            </div>
+            <p class="font-orbitron text-lg text-center mt-4">
+              ZAP placed 49th at Supernova 2024, one of the biggest Smash
+              Ultimate tournament of all time, defeating Scend and other fierce
+              competitors.
             </p>
           </div>
         </div>
@@ -341,10 +446,16 @@
       <section
         class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-teal-300/20 p-8 hover:scale-[1.02] transition"
       >
-        <h2 class="text-2xl font-semibold text-teal-200 mb-2 font-orbitron">
-          More On The Way
+        <h2
+          class="text-2xl font-semibold text-teal-200 mb-2 font-orbitron"
+          style="color: #44ff82"
+        >
+          MORE COMING SOON
         </h2>
-        <p class="text-gray-100">
+        <p
+          class="text-gray-100 text-2xl"
+          style="font-family: Georgia, 'Times New Roman', Times, serif"
+        >
           Stay tuned for more content, tournaments, and updates!
         </p>
       </section>
@@ -363,7 +474,7 @@
     <!-- Game image popup from the right -->
     <div
       id="gamePopupText"
-      class="fixed top-1/2 right-0 -translate-y-[180px] translate-x-full opacity-0 transition-all duration-700 ease-out z-40 w-80 max-w-[90vw] text-center pointer-events-none select-none"
+      class="fixed top-1/2 right-0 -translate-y-[180px] translate-x-full opacity-0 transition-all duration-700 ease-out z-40 w-80 max-w-[90vw] text-center pointer-events-none select-none font-orbitron"
       style="
         font-size: 2rem;
         font-weight: bold;
@@ -423,7 +534,7 @@
       style="display: block"
     >
       <img
-        src="game.png"
+        src=".git/game.png"
         alt="Game"
         class="w-full h-auto rounded-xl"
         draggable="false"
@@ -476,7 +587,7 @@
       function spawnMech() {
         const fromLeft = Math.random() < 0.5;
         const mech = document.createElement("img");
-        mech.src = "mech.gif"; // Make sure mech.gif exists in your folder
+        mech.src = ".git/mech.gif"; // Make sure mech.gif exists in your .git folder
         mech.className = "mech-gif";
         mech.style.position = "fixed";
         mech.style.bottom = "40px";
@@ -512,7 +623,7 @@
             requestAnimationFrame(animateMech);
           } else {
             // Show explosion
-            mech.src = "explosion.gif"; // Make sure explosion.gif exists
+            mech.src = ".git/explosion.gif"; // Make sure explosion.gif exists in your .git folder
             mech.style.filter = "brightness(2)";
             setTimeout(() => {
               mech.remove();

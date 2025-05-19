@@ -418,18 +418,23 @@ function drawGameOver() {
 
 function updateScoreboard() {
   // Only update DOM if value changed
-  if (score !== lastScore) {
-    document.getElementById("scoreDisplay").textContent = "Score: " + score;
-    lastScore = score;
-  }
-  if (highScore !== lastHighScore) {
-    document.getElementById("highScoreDisplay").textContent =
-      "High Score: " + highScore;
-    lastHighScore = highScore;
-  }
   if (hp !== lastHP) {
     document.getElementById("hpDisplay").textContent = "HP: " + Math.max(hp, 0);
     lastHP = hp;
+  }
+}
+
+function updateScoreDisplay(score, highScore) {
+  // Only update the numbers, not the label
+  const scoreNum = document.getElementById("scoreNumber");
+  const highScoreNum = document.getElementById("highScoreNumber");
+  if (score !== lastScore && scoreNum) {
+    scoreNum.textContent = score;
+    lastScore = score;
+  }
+  if (highScore !== lastHighScore && highScoreNum) {
+    highScoreNum.textContent = highScore;
+    lastHighScore = highScore;
   }
 }
 
@@ -450,10 +455,12 @@ function gameLoop(ts) {
     spawnBullet();
     lastBullet = ts;
   }
+  updateScoreDisplay(score, highScore);
   updateScoreboard();
   requestAnimationFrame(gameLoop);
 }
 
 // Initial scoreboard update
+updateScoreDisplay(score, highScore);
 updateScoreboard();
 requestAnimationFrame(gameLoop);
