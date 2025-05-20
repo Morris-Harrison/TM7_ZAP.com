@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href=".git/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Add Heroicons CDN for icons -->
@@ -129,10 +129,10 @@
       muted
       loop
       playsinline
-      id="bgvid"
       class="fixed inset-0 w-full h-full object-cover scale-110 blur-sm brightness-50 z-[-2]"
+      style="pointer-events: none"
     >
-      <source src=".git/zap.mp4" type="video/mp4" />
+      <source src="map.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <!-- Overlay for extra darkening -->
@@ -193,7 +193,7 @@
           title="X (Twitter)"
         >
           <img
-            src=".git/x.png"
+            src="x.png"
             alt="X"
             class="w-5 h-5"
             style="filter: brightness(0) invert(1)"
@@ -223,7 +223,7 @@
           title="Metafy"
         >
           <img
-            src=".git/metafy.png"
+            src="metafy.png"
             alt="Metafy"
             class="w-6 h-6"
             style="
@@ -368,7 +368,7 @@
                 >1 / 492</span
               >
               <img
-                src=".git/coinbox.jpg"
+                src="coinbox.jpg"
                 alt="Coinbox"
                 class="rounded-full object-cover"
                 style="width: 180px; height: 180px; border: 6px solid #ffffff"
@@ -388,7 +388,7 @@
                 >9 / 145</span
               >
               <img
-                src=".git/cirque.png"
+                src="cirque.png"
                 alt="Cirque"
                 class="rounded-full object-cover"
                 style="width: 180px; height: 180px; border: 6px solid #ffffff"
@@ -408,7 +408,7 @@
                 >13 / 512</span
               >
               <img
-                src=".git/ceo.png"
+                src="ceo.png"
                 alt="CEO"
                 class="rounded-full object-cover"
                 style="width: 180px; height: 180px; border: 6px solid #ffffff"
@@ -428,7 +428,7 @@
                 >49 / 2281</span
               >
               <img
-                src=".git/supernova.png"
+                src="supernova.png"
                 alt="Supernova"
                 class="rounded-full object-cover"
                 style="width: 180px; height: 180px; border: 6px solid #ffffff"
@@ -534,7 +534,7 @@
       style="display: block"
     >
       <img
-        src=".git/game.png"
+        src="game.png"
         alt="Game"
         class="w-full h-auto rounded-xl"
         draggable="false"
@@ -587,7 +587,7 @@
       function spawnMech() {
         const fromLeft = Math.random() < 0.5;
         const mech = document.createElement("img");
-        mech.src = ".git/mech.gif"; // Make sure mech.gif exists in your .git folder
+        mech.src = "mech.gif"; // Make sure mech.gif exists in your folder
         mech.className = "mech-gif";
         mech.style.position = "fixed";
         mech.style.bottom = "40px";
@@ -623,7 +623,7 @@
             requestAnimationFrame(animateMech);
           } else {
             // Show explosion
-            mech.src = ".git/explosion.gif"; // Make sure explosion.gif exists in your .git folder
+            mech.src = "explosion.gif"; // Make sure explosion.gif exists
             mech.style.filter = "brightness(2)";
             setTimeout(() => {
               mech.remove();
