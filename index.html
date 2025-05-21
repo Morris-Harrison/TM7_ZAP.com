@@ -129,6 +129,19 @@
           transform: rotate(360deg);
         }
       }
+
+      @media (max-width: 700px) {
+        .game-popup-link {
+          width: 110px !important;
+          max-width: 40vw !important;
+          border-width: 2px !important;
+        }
+        #gamePopupText {
+          font-size: 1.1rem !important;
+          width: 120px !important;
+          max-width: 60vw !important;
+        }
+      }
     </style>
   </head>
   <body class="relative min-h-screen text-white font-sans">
@@ -585,7 +598,7 @@
       id="gamePopupLink"
       target="_blank"
       rel="noopener"
-      class="fixed top-1/2 right-0 -translate-y-[50px] translate-y-[-75%] translate-x-full opacity-0 transition-all duration-700 ease-out z-30 w-80 max-w-[90vw] rounded-xl shadow-2xl border-4 border-teal-300 cursor-pointer"
+      class="fixed top-1/2 right-0 -translate-y-[50px] translate-y-[-75%] translate-x-full opacity-0 transition-all duration-700 ease-out z-30 w-80 max-w-[90vw] rounded-xl shadow-2xl border-4 border-teal-300 cursor-pointer game-popup-link"
       style="display: block"
     >
       <img
