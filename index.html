@@ -120,11 +120,60 @@
         animation: shake 1.6s infinite; /* was 0.7s, now slower */
         display: inline-block;
       }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body class="relative min-h-screen text-white font-sans">
+    <!-- Fallback background -->
+    <div
+      id="videoFallback"
+      style="
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+        z-index: -3;
+        pointer-events: none;
+      "
+    >
+      <div
+        id="videoLoadingSpinner"
+        style="
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 10;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div
+          style="
+            border: 6px solid #222;
+            border-top: 6px solid #44ff82;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            animation: spin 1s linear infinite;
+          "
+        ></div>
+      </div>
+    </div>
+
     <!-- Background video -->
     <video
+      id="bgVideo"
       autoplay
       muted
       loop
@@ -376,7 +425,7 @@
             </div>
             <p class="font-orbitron text-lg text-center mt-4">
               ZAP is a regular Coinbox champion, as well as placing 7th at the
-              Coinnbox IRL 2 Invitational.
+              Coinnbox IRL 2 Invitational, defeating Lima and Crepe Salee.
             </p>
           </div>
           <!-- Cirque SECOND -->
@@ -415,8 +464,8 @@
               />
             </div>
             <p class="font-orbitron text-lg text-center mt-4">
-              ZAP placed 13th at CEO 2023, defeating Riddles with Bowser Jr. and
-              Luigi in his incredible run.
+              ZAP placed 13th at CEO 2023, conquering Riddles and Omega in his
+              incredible run.
             </p>
           </div>
           <!-- Supernova FOURTH -->
@@ -577,6 +626,15 @@
       const isPink = false; // Example condition
       const color = isPink ? "hotpink" : "#ffe44c";
       const shadow = isPink ? "rgba(255,0,180,0.8)" : "rgba(255,228,76,0.8)";
+
+      // Hide the fallback once the video is ready to play
+      const bgVideo = document.getElementById("bgVideo");
+      const fallback = document.getElementById("videoFallback");
+      if (bgVideo) {
+        bgVideo.addEventListener("canplay", () => {
+          if (fallback) fallback.style.display = "none";
+        });
+      }
     </script>
 
     <script>
